@@ -11,7 +11,16 @@ body {
 }
 
 ol, ul {
-  padding-left: 30px;
+  padding-left: 50px;
+  li {
+    line-height: 50px;
+  }
+  button {
+    background-color: darken($color1, 10%);
+    color: $color2;
+    border: 1px outset lighten($color1, 10%);
+    height: 35px;
+  }
 }
 
 .board-row:after {
@@ -62,5 +71,5 @@ ol, ul {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-left: 35px;
 }
