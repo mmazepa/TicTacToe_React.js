@@ -6,7 +6,8 @@ import './index.scss';
 
 function Square(props) {
     return (
-        <button className="square"
+        <button id={props.id}
+            className="square"
             onClick={props.onClick}>
             {props.value}
         </button>
@@ -17,6 +18,7 @@ class Board extends React.Component {
     renderSquare(i) {
         return (
             <Square
+                id={"square" + i}
                 value={this.props.squares[i]}
                 onClick={() => this.props.onClick(i)}
             />
@@ -80,6 +82,10 @@ class Game extends React.Component {
             stepNumber: step,
             xIsNext: (step % 2) === 0,
         });
+        for (var i = 0; i < 9; i++) {
+            var id = "square" + i;
+            document.getElementById(id).classList.remove("winSquare");
+        };
     }
 
     render() {
@@ -94,13 +100,21 @@ class Game extends React.Component {
             return (
                 <li key={move}>
                     <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    {history[this.state.stepNumber][0]}
                 </li>
             );
         });
 
         let status;
         if (winner) {
-            status = 'Wygrywa: ' + winner;
+            status = 'Wygrywa: ' + winner.sign;
+            winner.squares.map((elem) => {
+                var id = "square" + elem;
+                document.getElementById(id).classList.add("winSquare");
+                return null;
+            });
+        } else if (!winner && history.length === 10) {
+            status = 'Brak ruchów, REMIS';
         } else {
             status = 'Teraz gracz: ' + (this.state.xIsNext ? 'X' : 'O');
         }
@@ -144,7 +158,11 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            const winnerObject = {
+                sign: squares[a],
+                squares: lines[i],
+            };
+            return winnerObject;
         }
     }
     return null;

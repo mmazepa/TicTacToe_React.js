@@ -49,6 +49,11 @@ ol, ul {
   width: $size_box;
 }
 
+.winSquare {
+  background-color: darkolivegreen;
+  color: whitesmoke;
+}
+
 .square:hover {
   background-color: lighten($color1, 50%);
 }
