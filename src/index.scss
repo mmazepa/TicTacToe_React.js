@@ -1,6 +1,13 @@
+$color1: darkgreen;
+$color2: whitesmoke;
+$size_box: 75px;
+
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  font: 28px "Century Gothic", Futura, sans-serif;
   margin: 20px;
+  font-weight: bold;
+  color: lighten($color1, 10%);
+  text-shadow: 2px 2px darken($color1, 10%);
 }
 
 ol, ul {
@@ -18,18 +25,27 @@ ol, ul {
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  background: darken($color2, 5%);
+  border: 2px solid $color1;
+  box-shadow: 10px 10px 5px darken($color1, 7.5%);
   float: left;
   font-size: 24px;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
+  line-height: $size_box;
+  height: $size_box;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: $size_box;
+}
+
+.square:hover {
+  background-color: lighten($color1, 50%);
+}
+
+.square:active {
+  background-color: lighten($color1, 15%);
 }
 
 .square:focus {
@@ -37,7 +53,7 @@ ol, ul {
 }
 
 .kbd-navigation .square:focus {
-  background: #ddd;
+  background: $color2;
 }
 
 .game {

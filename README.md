@@ -1,6 +1,6 @@
 # Tic Tac Toe - React.js
 
-Drobny projekt wykorzystujący bibliotekę **React.js**.
+Drobny projekt wykorzystujący bibliotekę **React.js** oraz składnię **React JSX**.
 
 Gra w Kółko i Krzyżyk (ang. Tic Tac Toe).
 
