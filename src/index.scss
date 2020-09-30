@@ -1,6 +1,6 @@
 $color1: darkgreen;
 $color2: whitesmoke;
-$size_box: 75px;
+$size_box: 100px;
 
 body {
   font: 28px "Century Gothic", Futura, sans-serif;
@@ -38,7 +38,7 @@ ol, ul {
   border: 2px solid $color1;
   box-shadow: 10px 10px 5px darken($color1, 7.5%);
   float: left;
-  font-size: 24px;
+  font-size: 50px;
   font-weight: bold;
   line-height: $size_box;
   height: $size_box;
@@ -47,15 +47,21 @@ ol, ul {
   padding: 0;
   text-align: center;
   width: $size_box;
-}
-
-.winSquare {
-  background-color: darkolivegreen;
-  color: whitesmoke;
+  transition: 0.2s;
 }
 
 .square:hover {
-  background-color: lighten($color1, 50%);
+  background: lighten($color1, 60%);
+  transition: 0.2s;
+}
+
+.winSquare {
+  background: linear-gradient(135deg, darkolivegreen, limegreen, darkcyan);
+  color: $color2;
+}
+
+.winSquare:hover {
+  background: linear-gradient(135deg, lighten(darkolivegreen, 25%), lighten(limegreen, 25%), lighten(darkcyan, 25%));
 }
 
 .square:active {
@@ -77,4 +83,8 @@ ol, ul {
 
 .game-info {
   margin-left: 35px;
+}
+
+.activeButton {
+  background-color: red;
 }

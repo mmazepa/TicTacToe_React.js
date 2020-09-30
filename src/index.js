@@ -64,10 +64,11 @@ class Game extends React.Component {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
+
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
+        squares[i] = this.state.xIsNext ? '✗' : '〇';
         this.setState({
             history: history.concat([{
                 squares: squares,
@@ -76,6 +77,16 @@ class Game extends React.Component {
             xIsNext: !this.state.xIsNext,
         });
     }
+
+    // handleHistoryClick(i) {
+    //     const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    //     for (var i = 0; i < history.length; i++) {
+    //         var id = "button" + i;
+    //         document.getElementById(id).classList.remove("activeButton");
+    //     };
+    //     // alert("button" + (this.state.stepNumber));
+    //     // document.getElementById("button" + this.state.stepNumber).classList.add("activeButton");
+    // }
 
     jumpTo(step) {
         this.setState({
@@ -99,7 +110,14 @@ class Game extends React.Component {
                 'Przejdź na początek gry';
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <button id={"button" + move}
+                            // className="activeButton"
+                            onClick={() => {
+                                this.jumpTo(move);
+                                // this.handleHistoryClick(move);
+                            }}>
+                        {desc}
+                    </button>
                     {history[this.state.stepNumber][0]}
                 </li>
             );
@@ -116,7 +134,7 @@ class Game extends React.Component {
         } else if (!winner && history.length === 10) {
             status = 'Brak ruchów, REMIS';
         } else {
-            status = 'Teraz gracz: ' + (this.state.xIsNext ? 'X' : 'O');
+            status = 'Teraz gracz: ' + (this.state.xIsNext ? '✗' : '〇');
         }
 
         return (
