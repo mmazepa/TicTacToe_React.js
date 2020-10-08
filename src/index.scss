@@ -1,31 +1,46 @@
 $color1: darkgreen;
 $color2: whitesmoke;
-$size_box: 100px;
+$size_box: 20vh;
 
-body {
-  font: 28px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
-  font-weight: bold;
-  color: lighten($color1, 10%);
-  text-shadow: 2px 2px darken($color1, 10%);
+html {
+  margin-top: 3%;
+  background: linear-gradient(90deg, lighten($color1, 50%), darken($color2, 10%), lighten($color1, 50%));
+
+  body {
+    font: 4vh "Century Gothic", Futura, sans-serif;
+    font-weight: bold;
+    color: lighten($color1, 10%);
+    text-shadow: 0.35vh 0.35vh darken($color1, 10%);
+
+    #root {
+      width: 75%;
+      margin: 0 auto;
+    }
+  }
 }
 
 ol, ul {
-  padding-left: 50px;
+  padding-left: 10vh;
   li {
-    line-height: 50px;
+    line-height: 7.5vh;
   }
   button {
     background-color: darken($color1, 10%);
     color: $color2;
-    border: 1px outset lighten($color1, 10%);
-    height: 35px;
-    width: 200px;
+    border: 0.15vh outset lighten($color1, 10%);
+    height: 6vh;
+    width: 33vh;
     transition: 0.5s;
+    font-size: 2vh;
   }
+
+  button:active {
+    border: 0.15vh inset darken($color1, 10%);
+  }
+
   @for $i from 0 through 9 {
     #button#{$i}:hover {
-      width: 250px;
+      width: 40vh;
       transition: 0.5s;
     }
   }
@@ -37,16 +52,12 @@ ol, ul {
   display: table;
 }
 
-.status {
-  margin-bottom: 10px;
-}
-
 .square {
   background: darken($color2, 5%);
-  border: 2px solid $color1;
-  box-shadow: 10px 10px 5px darken($color1, 7.5%);
+  border: 0.4vh solid $color1;
+  box-shadow: 2vh 2vh 1vh darken($color1, 7.5%);
   float: left;
-  font-size: 50px;
+  font-size: 13vh;
   font-weight: bold;
   line-height: $size_box;
   height: $size_box;
@@ -90,7 +101,7 @@ ol, ul {
 }
 
 .game-info {
-  margin-left: 35px;
+  margin-left: 10vh;
 }
 
 .activeButton {
