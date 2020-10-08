@@ -76,17 +76,18 @@ class Game extends React.Component {
             stepNumber: history.length,
             xIsNext: !this.state.xIsNext,
         });
+
+        this.handleHistoryClick(this.state.stepNumber);
     }
 
-    // handleHistoryClick(i) {
-    //     const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    //     for (var i = 0; i < history.length; i++) {
-    //         var id = "button" + i;
-    //         document.getElementById(id).classList.remove("activeButton");
-    //     };
-    //     // alert("button" + (this.state.stepNumber));
-    //     // document.getElementById("button" + this.state.stepNumber).classList.add("activeButton");
-    // }
+    async handleHistoryClick(i) {
+        const history = this.state.history.slice(0, this.state.stepNumber + 1);
+        for (var i = 0; i < history.length; i++) {
+            var id = "button" + i;
+            await document.getElementById(id).classList.remove("activeButton");
+        };
+        await document.getElementById("button" + this.state.stepNumber).classList.add("activeButton");
+    }
 
     jumpTo(step) {
         this.setState({
@@ -111,10 +112,10 @@ class Game extends React.Component {
             return (
                 <li key={move}>
                     <button id={"button" + move}
-                            // className="activeButton"
+                            className="activeButton"
                             onClick={() => {
                                 this.jumpTo(move);
-                                // this.handleHistoryClick(move);
+                                this.handleHistoryClick(move);
                             }}>
                         {desc}
                     </button>
@@ -131,7 +132,7 @@ class Game extends React.Component {
                 document.getElementById(id).classList.add("winSquare");
                 return null;
             });
-        } else if (!winner && history.length === 10) {
+        } else if (!winner && history.length === 10 && this.state.stepNumber === 9) {
             status = 'Brak ruchów, REMIS';
         } else {
             status = 'Teraz gracz: ' + (this.state.xIsNext ? '✗' : '〇');

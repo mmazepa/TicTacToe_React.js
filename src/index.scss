@@ -20,6 +20,14 @@ ol, ul {
     color: $color2;
     border: 1px outset lighten($color1, 10%);
     height: 35px;
+    width: 200px;
+    transition: 0.5s;
+  }
+  @for $i from 0 through 9 {
+    #button#{$i}:hover {
+      width: 250px;
+      transition: 0.5s;
+    }
   }
 }
 
@@ -86,5 +94,7 @@ ol, ul {
 }
 
 .activeButton {
-  background-color: red;
+  background-color: lighten($color1, 25%);
+  color: darken($color1, 15%);
+  font-weight: bold;
 }
