@@ -77,10 +77,10 @@ class Game extends React.Component {
             xIsNext: !this.state.xIsNext,
         });
 
-        this.handleHistoryClick(this.state.stepNumber);
+        this.handleHistoryClick();
     }
 
-    async handleHistoryClick(i) {
+    async handleHistoryClick() {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         for (var i = 0; i < history.length; i++) {
             var id = "button" + i;
@@ -115,7 +115,7 @@ class Game extends React.Component {
                             className="activeButton"
                             onClick={() => {
                                 this.jumpTo(move);
-                                this.handleHistoryClick(move);
+                                this.handleHistoryClick();
                             }}>
                         {desc}
                     </button>
