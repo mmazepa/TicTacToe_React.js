@@ -4,7 +4,7 @@ Drobny projekt wykorzystujący bibliotekę **React.js** oraz składnię **React 
 
 Gra w Kółko i Krzyżyk (ang. Tic Tac Toe).
 
-Styl wspierają pliki **Sass**.
+Styl wspiera **Sass** ze składnią **SCSS**.
 
 Przydatne informacje:
 * bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
