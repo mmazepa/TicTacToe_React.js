@@ -2,6 +2,17 @@ $color1: darkgreen;
 $color2: whitesmoke;
 $size_box: 20vh;
 
+@mixin colors($backColor, $fontColor, $border) {
+  background-color: $backColor;
+  color: $fontColor;
+  border: $border;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
 html {
   margin-top: 3%;
   background: linear-gradient(90deg, lighten($color1, 50%), darken($color2, 10%), lighten($color1, 50%));
@@ -21,21 +32,20 @@ html {
 
 ol, ul {
   padding-left: 10vh;
+
   li {
     line-height: 7.5vh;
   }
+
   button {
-    background-color: darken($color1, 10%);
-    color: $color2;
-    border: 0.15vh outset lighten($color1, 10%);
-    height: 6vh;
-    width: 33vh;
+    @include colors(darken($color1, 10%), $color2, 0.15vh outset lighten($color1, 10%));
+    @include size(33vh, 6vh);
     transition: 0.5s;
     font-size: 2vh;
-  }
 
-  button:active {
-    border: 0.15vh inset darken($color1, 10%);
+    &:active {
+      border: 0.15vh inset darken($color1, 10%);
+    }
   }
 
   @for $i from 0 through 9 {
@@ -48,47 +58,44 @@ ol, ul {
 
 .board-row:after {
   clear: both;
-  content: "";
   display: table;
 }
 
 .square {
-  background: darken($color2, 5%);
-  border: 0.4vh solid $color1;
+  @include colors(darken($color2, 5%), darken(gray, 25%), 0.4vh solid $color1)
+  @include size($size_box, $size_box);
   box-shadow: 2vh 2vh 1vh darken($color1, 7.5%);
   float: left;
   font-size: 13vh;
   font-weight: bold;
   line-height: $size_box;
-  height: $size_box;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: $size_box;
   transition: 0.2s;
-}
 
-.square:hover {
-  background: lighten($color1, 60%);
-  transition: 0.2s;
+  &:hover {
+    background: lighten($color1, 60%);
+    transition: 0.2s;
+  }
+
+  &:active {
+    background-color: lighten($color1, 15%);
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .winSquare {
   background: linear-gradient(135deg, darkolivegreen, limegreen, darkcyan);
   color: $color2;
-}
 
-.winSquare:hover {
-  background: linear-gradient(135deg, lighten(darkolivegreen, 25%), lighten(limegreen, 25%), lighten(darkcyan, 25%));
-}
-
-.square:active {
-  background-color: lighten($color1, 15%);
-}
-
-.square:focus {
-  outline: none;
+  &:hover {
+    background: linear-gradient(135deg, lighten(darkolivegreen, 25%), lighten(limegreen, 25%), lighten(darkcyan, 25%));
+  }
 }
 
 .kbd-navigation .square:focus {
@@ -104,25 +111,20 @@ ol, ul {
   margin-left: 10vh;
 
   .sortButton {
-    margin-top: 2vh;
-    background-color: lighten(darkolivegreen, 25%);
-    color: darken(darkolivegreen, 10%);
-    border: 0.15vh outset darken($color1, 10%);
-    height: 4vh;
+    @include colors(lighten(darkolivegreen, 25%), darken(darkolivegreen, 10%), 0.15vh outset darken($color1, 10%));
+    @include size(33vh, 4vh);
     width: 33vh;
     font-size: 2vh;
     border-radius: 10vh;
-  }
 
-  .sortButton:hover {
-    background-color: darken(darkolivegreen, 10%);
-    color: lighten(darkolivegreen, 25%);
-  }
+    &:hover {
+      background-color: darken(darkolivegreen, 10%);
+      color: lighten(darkolivegreen, 25%);
+    }
 
-  .sortButton:active {
-    background-color: lighten(darkolivegreen, 50%);
-    color: darken(darkolivegreen, 25%);
-    border: 0.15vh inset darken(darkolivegreen, 10%);
+    &:active {
+      @include colors(lighten(darkolivegreen, 50%), darken(darkolivegreen, 25%), 0.15vh inset darken(darkolivegreen, 10%));
+    }
   }
 }
 
