@@ -109,7 +109,7 @@ class Game extends React.Component {
                 'Przejdź do ruchu #' + move :
                 'Przejdź na początek gry';
             return (
-                <li key={move}>
+                <li key={move} id={"li" + move}>
                     <button id={"button" + move}
                             className="button activeButton"
                             onClick={() => {
@@ -190,12 +190,12 @@ function calculateWinner(squares) {
 }
 
 function sortButtons() {
-    var buttons = document.getElementsByClassName("button");
+    var buttons = document.getElementsByTagName("li");
 
     var return1 = -1;
     var return2 = 1;
 
-    if (buttons[0].id === "button0") {
+    if (buttons[0].id === "li0") {
         return2 = [return1, return1 = return2][0];
     }
 
@@ -207,12 +207,10 @@ function sortButtons() {
             return return2;
         }
     });
-    var container = buttons[0].parentElement.parentElement;
+    var container = buttons[0].parentElement;
     container.innerHTML = "";
 
     for (var i = 0, l = buttons.length; i < l; i++) {
-        const li = document.createElement("li");
-        li.appendChild(buttons[i]);
-        container.appendChild(li);
+        container.appendChild(buttons[i]);
     }
 }
