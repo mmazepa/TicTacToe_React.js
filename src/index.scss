@@ -34,7 +34,7 @@ ol, ul {
   padding-left: 10vh;
 
   li {
-    line-height: 7.5vh;
+    line-height: 7vh;
   }
 
   button {
@@ -111,19 +111,18 @@ ol, ul {
   margin-left: 10vh;
 
   .sortButton {
-    @include colors(lighten(darkolivegreen, 25%), darken(darkolivegreen, 10%), 0.15vh outset darken($color1, 10%));
+    @include colors(darken($color1, 10%), lighten($color1, 25%), 0.15vh outset darken($color1, 10%));
     @include size(33vh, 4vh);
-    width: 33vh;
     font-size: 2vh;
-    border-radius: 10vh;
+    border-top-left-radius: 1vh;
+    border-bottom-right-radius: 1vh;
 
     &:hover {
-      background-color: darken(darkolivegreen, 10%);
-      color: lighten(darkolivegreen, 25%);
+      @include colors(lighten($color1, 25%), darken($color1, 10%), 0.15vh outset darken($color1, 10%));
     }
 
     &:active {
-      @include colors(lighten(darkolivegreen, 50%), darken(darkolivegreen, 25%), 0.15vh inset darken(darkolivegreen, 10%));
+      @include colors(lighten($color1, 50%), darken($color1, 25%), 0.15vh inset darken($color1, 10%));
     }
   }
 }
