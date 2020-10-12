@@ -102,6 +102,28 @@ ol, ul {
 
 .game-info {
   margin-left: 10vh;
+
+  .sortButton {
+    margin-top: 2vh;
+    background-color: lighten(darkolivegreen, 25%);
+    color: darken(darkolivegreen, 10%);
+    border: 0.15vh outset darken($color1, 10%);
+    height: 4vh;
+    width: 33vh;
+    font-size: 2vh;
+    border-radius: 10vh;
+  }
+
+  .sortButton:hover {
+    background-color: darken(darkolivegreen, 10%);
+    color: lighten(darkolivegreen, 25%);
+  }
+
+  .sortButton:active {
+    background-color: lighten(darkolivegreen, 50%);
+    color: darken(darkolivegreen, 25%);
+    border: 0.15vh inset darken(darkolivegreen, 10%);
+  }
 }
 
 .activeButton {

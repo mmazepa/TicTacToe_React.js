@@ -110,7 +110,7 @@ class Game extends React.Component {
             return (
                 <li key={move}>
                     <button id={"button" + move}
-                            className="activeButton"
+                            className="button activeButton"
                             onClick={() => {
                                 this.jumpTo(move);
                                 this.handleHistoryClick();
@@ -146,6 +146,9 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
+                    <button className="sortButton" onClick={() => sortButtons()}>
+                        Sortuj
+                    </button>
                     <ol>{moves}</ol>
                 </div>
             </div>
@@ -183,4 +186,32 @@ function calculateWinner(squares) {
         }
     }
     return null;
+}
+
+function sortButtons() {
+    var buttons = document.getElementsByClassName("button");
+
+    var return1 = -1;
+    var return2 = 1;
+
+    if (buttons[0].id === "button0") {
+        return2 = [return1, return1 = return2][0];
+    }
+
+    buttons = Array.prototype.slice.call(buttons);
+    buttons.sort(function(a, b) {
+        if (a.id < b.id) {
+            return return1;
+        } else {
+            return return2;
+        }
+    });
+    var container = buttons[0].parentElement.parentElement;
+    container.innerHTML = "";
+
+    for (var i = 0, l = buttons.length; i < l; i++) {
+        const li = document.createElement("li");
+        li.appendChild(buttons[i]);
+        container.appendChild(li);
+    }
 }
