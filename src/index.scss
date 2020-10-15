@@ -56,9 +56,11 @@ ol, ul {
   }
 }
 
-.board-row:after {
-  clear: both;
-  display: table;
+.board-row {
+  &:after {
+    clear: both;
+    display: table;
+  }
 }
 
 .square {
