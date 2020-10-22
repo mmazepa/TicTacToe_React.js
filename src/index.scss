@@ -77,6 +77,17 @@ ol, ul {
   text-align: center;
   transition: 0.2s;
 
+  position: sticky;
+  span {
+    &.fieldLabel {
+      font-size: 2vw;
+      color: silver;
+      position: absolute;
+      bottom: -4.5vw;
+      right: 0.5vw;
+    }
+  }
+
   &:hover {
     background: lighten($color1, 60%);
     transition: 0.2s;
