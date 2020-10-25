@@ -103,11 +103,15 @@ ol, ul {
 }
 
 .winSquare {
-  background: linear-gradient(135deg, darkolivegreen, limegreen, darkcyan);
+  $color_no1: darken(desaturate(adjust-hue(mix($color1, $color2, 75%), -75deg), 10%), 5%);
+  $color_no2: lighten(desaturate(adjust-hue(lighten($color1, 20%), -10deg), 10%), 12.5%);
+  $color_no3: saturate(adjust-hue(mix($color1, $color2, 75%), 75deg), 10%);
+
+  background: linear-gradient(135deg, $color_no1, $color_no2, $color_no3);
   color: $color2;
 
   &:hover {
-    background: linear-gradient(135deg, lighten(darkolivegreen, 25%), lighten(limegreen, 25%), lighten(darkcyan, 25%));
+    background: linear-gradient(135deg, lighten($color_no1, 25%), lighten($color_no2, 25%), lighten($color_no3, 25%));
   }
 }
 
@@ -144,4 +148,5 @@ ol, ul {
   background-color: lighten($color1, 25%);
   color: darken($color1, 15%);
   font-weight: bold;
+  box-shadow: 5px 5px 10px darken($color1, 15%);
 }
