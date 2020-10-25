@@ -40,7 +40,7 @@ class Game extends React.Component {
         for (var i = 0; i < history.length; i++) {
             var id = "button" + i;
             await document.getElementById(id).classList.remove("activeButton");
-        };
+        }
         await document.getElementById("button" + this.state.stepNumber).classList.add("activeButton");
     }
 
@@ -52,7 +52,7 @@ class Game extends React.Component {
         for (var i = 0; i < 9; i++) {
             var id = "square" + i;
             document.getElementById(id).classList.remove("winSquare");
-        };
+        }
     }
 
     render() {
@@ -62,7 +62,7 @@ class Game extends React.Component {
 
         const moves = history.map((step, move) => {
             const desc = move ?
-                "Przejdź do ruchu #" + move :
+                "Ruch #" + move + ": " + ((move % 2) ? "✗" : "〇") + " na " + checkField(history[move-1].squares, history[move].squares) :
                 "Przejdź na początek gry";
             return (
                 <li key={move} id={"li" + move}>
@@ -163,4 +163,25 @@ function sortButtons() {
     for (var i = 0, l = buttons.length; i < l; i++) {
         container.appendChild(buttons[i]);
     }
+}
+
+function checkField(squares1, squares2) {
+    for (var i = 0; i < squares1.length; i++) {
+        if (String(squares1[i]).localeCompare(String(squares2[i]))) {
+            return calculateLabel(i);
+        }
+    }
+}
+
+export function calculateLabel(num) {
+    if (between(num, 0, 2))
+        return "A" + (num%3+1);
+    else if (between(num, 3, 5))
+        return "B" + (num%3+1);
+    else if (between(num, 6, 8))
+        return "C" + (num%3+1);
+}
+
+function between(x, min, max) {
+  return x >= min && x <= max;
 }
