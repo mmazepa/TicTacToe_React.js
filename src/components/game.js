@@ -32,15 +32,16 @@ class Game extends React.Component {
             xIsNext: !this.state.xIsNext,
         });
 
-        this.handleHistoryClick();
-
-        for (var count = 0; count < squares.length; count++) {
-            document.getElementById("square" + count).classList.remove("lastClicked");
-        }
-        document.getElementById("square" + i).classList.add("lastClicked");
+        this.handleHistoryClick(squares.length, i);
+        selectLastClicked(squares.length, i);
     }
 
-    async handleHistoryClick() {
+    async handleHistoryClick(length, index, object) {
+        if (object !== null && object !== undefined) {
+            selectLastClicked(length, object);
+        } else {
+            selectLastClicked(length, -1);
+        }
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         for (var i = 0; i < history.length; i++) {
             var id = "button" + i;
@@ -67,7 +68,7 @@ class Game extends React.Component {
 
         const moves = history.map((step, move) => {
             const desc = move ?
-                "Ruch #" + move + ": " + ((move % 2) ? "✗" : "〇") + " na " + checkField(history[move-1].squares, history[move].squares) :
+                "Ruch #" + move + ": " + ((move % 2) ? "✗" : "〇") + " na " + checkFieldWithLabel(history[move-1].squares, history[move].squares) :
                 "Przejdź na początek gry";
             return (
                 <li key={move} id={"li" + move}>
@@ -75,7 +76,7 @@ class Game extends React.Component {
                             className="button activeButton"
                             onClick={() => {
                                 this.jumpTo(move);
-                                this.handleHistoryClick();
+                                this.handleHistoryClick(current.squares.length, move, ((move-1 >= 0) ? checkField(history[move-1].squares, history[move].squares) : null));
                             }}>
                         {desc}
                     </button>
@@ -173,9 +174,13 @@ const sortButtons = () => {
 const checkField = (squares1, squares2) => {
     for (var i = 0; i < squares1.length; i++) {
         if (String(squares1[i]).localeCompare(String(squares2[i]))) {
-            return calculateLabel(i);
+            return i;
         }
     }
+};
+
+const checkFieldWithLabel = (squares1, squares2) => {
+    return calculateLabel(checkField(squares1, squares2));
 };
 
 export const calculateLabel = (num) => {
@@ -190,3 +195,13 @@ export const calculateLabel = (num) => {
 const between = (x, min, max) => {
   return x >= min && x <= max;
 };
+
+const selectLastClicked = (length, index) => {
+    for (var count = 0; count < length; count++) {
+        document.getElementById("square" + count).classList.remove("lastClicked");
+    }
+
+    if (index >= 0) {
+        document.getElementById("square" + index).classList.add("lastClicked");
+    }
+}

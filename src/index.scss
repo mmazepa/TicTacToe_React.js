@@ -152,6 +152,6 @@ ol, ul {
 }
 
 .lastClicked {
-  color: lighten($color1, 15%);
-  text-shadow: 1.5px 1.5px 3px darken($color2, 15%);
+  color: lighten($color1, 10%);
+  text-shadow: 1.5px 1.5px 3px lighten($color1, 40%);
 }
