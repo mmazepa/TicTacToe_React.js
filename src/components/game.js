@@ -33,6 +33,11 @@ class Game extends React.Component {
         });
 
         this.handleHistoryClick();
+
+        for (var count = 0; count < squares.length; count++) {
+            document.getElementById("square" + count).classList.remove("lastClicked");
+        }
+        document.getElementById("square" + i).classList.add("lastClicked");
     }
 
     async handleHistoryClick() {
@@ -114,7 +119,7 @@ class Game extends React.Component {
 }
 export default Game;
 
-function calculateWinner(squares) {
+const calculateWinner = (squares) => {
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -137,9 +142,9 @@ function calculateWinner(squares) {
         }
     }
     return null;
-}
+};
 
-function sortButtons() {
+const sortButtons = () => {
     var buttons = document.getElementsByTagName("li");
 
     var return1 = -1;
@@ -163,25 +168,25 @@ function sortButtons() {
     for (var i = 0, l = buttons.length; i < l; i++) {
         container.appendChild(buttons[i]);
     }
-}
+};
 
-function checkField(squares1, squares2) {
+const checkField = (squares1, squares2) => {
     for (var i = 0; i < squares1.length; i++) {
         if (String(squares1[i]).localeCompare(String(squares2[i]))) {
             return calculateLabel(i);
         }
     }
-}
+};
 
-export function calculateLabel(num) {
+export const calculateLabel = (num) => {
     if (between(num, 0, 2))
         return "A" + (num%3+1);
     else if (between(num, 3, 5))
         return "B" + (num%3+1);
     else if (between(num, 6, 8))
         return "C" + (num%3+1);
-}
+};
 
-function between(x, min, max) {
+const between = (x, min, max) => {
   return x >= min && x <= max;
-}
+};

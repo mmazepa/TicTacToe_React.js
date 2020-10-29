@@ -150,3 +150,8 @@ ol, ul {
   font-weight: bold;
   box-shadow: 5px 5px 10px darken($color1, 15%);
 }
+
+.lastClicked {
+  color: lighten($color1, 15%);
+  text-shadow: 1.5px 1.5px 3px darken($color2, 15%);
+}
