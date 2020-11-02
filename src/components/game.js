@@ -192,7 +192,7 @@ export const calculateLabel = (num) => {
         return "C" + (num%3+1);
 };
 
-const between = (x, min, max) => {
+export const between = (x, min, max) => {
   return x >= min && x <= max;
 };
 
