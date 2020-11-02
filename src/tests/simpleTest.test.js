@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 
-import { between, calculateLabel } from './../components/game.js';
+import { between, calculateLabel } from "./../components/game.js";
 
 describe("between", () => {
   test("Number 5 is between 2 and 7.", () => { expect(between(5, 2, 7)).toBe(true); });
