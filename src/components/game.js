@@ -68,8 +68,8 @@ class Game extends React.Component {
 
         const moves = history.map((step, move) => {
             const desc = move ?
-                "Ruch #" + move + ": " + ((move % 2) ? "✗" : "〇") + " na " + checkFieldWithLabel(history[move-1].squares, history[move].squares) :
-                "Przejdź na początek gry";
+                "Move #" + move + ": " + ((move % 2) ? "✗" : "〇") + " on " + checkFieldWithLabel(history[move-1].squares, history[move].squares) :
+                "Go to the beggining";
             return (
                 <li key={move} id={"li" + move}>
                     <button id={"button" + move}
@@ -87,16 +87,16 @@ class Game extends React.Component {
 
         let status;
         if (winner) {
-            status = "Wygrywa: " + winner.sign;
+            status = "The winner is: " + winner.sign;
             winner.squares.map((elem) => {
                 var id = "square" + elem;
                 document.getElementById(id).classList.add("winSquare");
                 return null;
             });
         } else if (!winner && history.length === 10 && this.state.stepNumber === 9) {
-            status = "Brak ruchów, REMIS";
+            status = "Lack of moves, DRAW";
         } else {
-            status = "Teraz gracz: " + (this.state.xIsNext ? "✗" : "〇");
+            status = "Now player: " + (this.state.xIsNext ? "✗" : "〇");
         }
 
         return (
@@ -110,7 +110,7 @@ class Game extends React.Component {
                 <div className="game-info">
                     <div>{status}</div>
                     <button className="sortButton" onClick={() => sortButtons()}>
-                        Sortuj
+                        Sort buttons
                     </button>
                     <ol>{moves}</ol>
                 </div>
