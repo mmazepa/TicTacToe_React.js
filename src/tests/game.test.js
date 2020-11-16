@@ -11,10 +11,10 @@ describe("game", () => {
     render(<Game />);
   });
 
-  test("Search for the initial text to be in the document.", () => {
+  test("Find some specific text in the document.", () => {
     render(<Game />);
-    expect(screen.getByText("Teraz gracz: ✗")).toBeInTheDocument();
-    expect(screen.getByText("Sortuj")).toBeInTheDocument();
-    expect(screen.getByText("Przejdź na początek gry")).toBeInTheDocument();
+    expect(screen.getByText("Now player: ✗")).toBeInTheDocument();
+    expect(screen.getByText("Sort buttons")).toBeInTheDocument();
+    expect(screen.getByText("Go to the beggining")).toBeInTheDocument();
   });
 });
