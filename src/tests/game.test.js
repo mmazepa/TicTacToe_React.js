@@ -7,14 +7,14 @@ import { render, screen } from "@testing-library/react";
 import Game from "./../components/game.js";
 
 describe("game", () => {
-  test("Renders game component.", () => {
-    render(<Game />);
-  });
+    test("Renders game component.", () => {
+        render(<Game />);
+    });
 
-  test("Find some specific text in the document.", () => {
-    render(<Game />);
-    expect(screen.getByText("Now player: ✗")).toBeInTheDocument();
-    expect(screen.getByText("Sort buttons")).toBeInTheDocument();
-    expect(screen.getByText("Go to the beggining")).toBeInTheDocument();
-  });
+    test("Find some specific text in the document.", () => {
+        render(<Game />);
+        expect(screen.getByText("Now player: ✗")).toBeInTheDocument();
+        expect(screen.getByText("Sort buttons")).toBeInTheDocument();
+        expect(screen.getByText("Go to the beggining")).toBeInTheDocument();
+    });
 });
