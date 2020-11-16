@@ -2,7 +2,7 @@
 
 import React from "react";
 import Square from "./square.js";
-import {calculateLabel} from "./game.js";
+import { calculateLabel } from "./game.js";
 
 class Board extends React.Component {
     renderSquare(i) {

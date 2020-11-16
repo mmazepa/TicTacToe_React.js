@@ -4,7 +4,9 @@ import { between, calculateLabel } from "./../components/game.js";
 
 describe("\"between\" function", () => {
     test("Number 5 is between 2 and 7.", () => { expect(between(5, 2, 7)).toBe(true); });
+    test("Number 5 is between 7 and 2.", () => { expect(between(5, 7, 2)).toBe(true); });
     test("Number 7 is NOT between 2 and 5.", () => { expect(between(7, 2, 5)).toBe(false); });
+    test("Number 7 is NOT between 5 and 2.", () => { expect(between(7, 5, 2)).toBe(false); });
 });
 
 describe("\"calculateLabel\" function", () => {

@@ -184,16 +184,20 @@ const checkFieldWithLabel = (squares1, squares2) => {
 };
 
 export const calculateLabel = (num) => {
+    let number = num%3+1;
+    let letter = ""
     if (between(num, 0, 2))
-        return "A" + (num%3+1);
+        letter = "A";
     else if (between(num, 3, 5))
-        return "B" + (num%3+1);
+        letter = "B";
     else if (between(num, 6, 8))
-        return "C" + (num%3+1);
+        letter = "C";
+    return letter + number;
 };
 
 export const between = (x, min, max) => {
-  return x >= min && x <= max;
+    if (min > max) [min, max] = [max, min];
+    return x >= min && x <= max;
 };
 
 const selectLastClicked = (length, index) => {
