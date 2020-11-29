@@ -12,7 +12,7 @@ describe("\"between\" function", () => {
 describe("\"calculateLabel\" function", () => {
     const labels = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"];
     for (let i = 0; i < labels.length; i++) {
-        test("Field '" + i + "' is labeled '" + labels[i] + "'.", () => {
+        test("Field \"" + i + "\" is labeled \"" + labels[i] + "\".", () => {
             expect(calculateLabel(i)).toBe(labels[i]);
         });
     }

@@ -3,6 +3,8 @@
 import React from "react";
 import Board from "./board.js";
 
+const signs = ["✘", "〇"];
+
 class Game extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +25,7 @@ class Game extends React.Component {
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
-        squares[i] = this.state.xIsNext ? "✗" : "〇";
+        squares[i] = this.state.xIsNext ? signs[0] : signs[1];
         this.setState({
             history: history.concat([{
                 squares: squares,
@@ -68,7 +70,7 @@ class Game extends React.Component {
 
         const moves = history.map((step, move) => {
             const desc = move ?
-                "Move #" + move + ": " + ((move % 2) ? "✗" : "〇") + " on " + checkFieldWithLabel(history[move-1].squares, history[move].squares) :
+                "Move #" + move + ": " + ((move % 2) ? signs[0] : signs[1]) + " on " + checkFieldWithLabel(history[move-1].squares, history[move].squares) :
                 "Go to the beggining";
             return (
                 <li key={move} id={"li" + move}>
@@ -96,7 +98,7 @@ class Game extends React.Component {
         } else if (!winner && history.length === 10 && this.state.stepNumber === 9) {
             status = "Lack of moves, DRAW";
         } else {
-            status = "Now player: " + (this.state.xIsNext ? "✗" : "〇");
+            status = "Now player: " + (this.state.xIsNext ? signs[0] : signs[1]);
         }
 
         return (

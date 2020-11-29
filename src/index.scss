@@ -14,7 +14,7 @@ $size_box: 20vh;
 }
 
 html {
-  margin-top: 3%;
+  margin-top: 3vh;
   background: linear-gradient(90deg, lighten($color1, 50%), darken($color2, 10%), lighten($color1, 50%));
 
   body {
@@ -126,6 +126,10 @@ ol, ul {
 
 .game-info {
   margin-left: 10vh;
+
+  div {
+    line-height: 4.5vh;
+  }
 
   .sortButton {
     @include colors(darken($color1, 10%), lighten($color1, 25%), 0.15vh outset darken($color1, 10%));
