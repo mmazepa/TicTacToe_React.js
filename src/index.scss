@@ -26,136 +26,142 @@ html {
     #root {
       width: 75%;
       margin: 0 auto;
+
+      .game {
+        display: flex;
+        flex-direction: row;
+
+        div {
+          &.game-board {
+            div {
+              div {
+                &.board-row {
+                  &:after {
+                    clear: both;
+                    display: table;
+                  }
+
+                  button {
+                    &.square {
+                      @include colors(darken($color2, 5%), darken(gray, 25%), 0.4vh solid $color1)
+                      @include size($size_box, $size_box);
+                      box-shadow: 2vh 2vh 1vh darken($color1, 7.5%);
+                      float: left;
+                      font-size: 13vh;
+                      font-weight: bold;
+                      line-height: $size_box;
+                      margin-right: -1px;
+                      margin-top: -1px;
+                      padding: 0;
+                      text-align: center;
+                      transition: 0.2s;
+                      position: sticky;
+
+                      span {
+                        &.fieldLabel {
+                          font-size: 2vw;
+                          color: silver;
+                          position: absolute;
+                          bottom: -4.5vw;
+                          right: 0.5vw;
+                        }
+                      }
+
+                      &:hover {
+                        background: lighten($color1, 60%);
+                        transition: 0.2s;
+                      }
+
+                      &:active {
+                        background-color: lighten($color1, 15%);
+                      }
+
+                      &:focus {
+                        outline: none;
+                      }
+
+                      &.lastClicked {
+                        color: lighten($color1, 10%);
+                        text-shadow: 1.5px 1.5px 3px lighten($color1, 40%);
+                      }
+
+                      &.winSquare {
+                        $color_no1: darken(desaturate(adjust-hue(mix($color1, $color2, 75%), -75deg), 10%), 5%);
+                        $color_no2: lighten(desaturate(adjust-hue(lighten($color1, 20%), -10deg), 10%), 12.5%);
+                        $color_no3: saturate(adjust-hue(mix($color1, $color2, 75%), 75deg), 10%);
+
+                        background: linear-gradient(135deg, $color_no1, $color_no2, $color_no3);
+                        color: $color2;
+
+                        &:hover {
+                          background: linear-gradient(135deg, lighten($color_no1, 25%), lighten($color_no2, 25%), lighten($color_no3, 25%));
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.game-info {
+            margin-left: 10vh;
+
+            div {
+              line-height: 4.5vh;
+            }
+
+            ol {
+              padding-left: 10vh;
+
+              li {
+                line-height: 7vh;
+              }
+
+              button {
+                @include colors(darken($color1, 10%), $color2, 0.15vh outset lighten($color1, 10%));
+                @include size(33vh, 6vh);
+                transition: 0.5s;
+                font-size: 2vh;
+
+                &:active {
+                  border: 0.15vh inset darken($color1, 10%);
+                }
+
+                &.activeButton {
+                  background-color: lighten($color1, 25%);
+                  color: darken($color1, 15%);
+                  font-weight: bold;
+                  box-shadow: 5px 5px 10px darken($color1, 15%);
+                }
+              }
+
+              @for $i from 0 through 9 {
+                #button#{$i}:hover {
+                  width: 40vh;
+                  transition: 0.5s;
+                }
+              }
+            }
+
+            .sortButton {
+              @include colors(darken($color1, 10%), lighten($color1, 25%), 0.15vh outset darken($color1, 10%));
+              @include size(33vh, 4vh);
+              font-size: 2vh;
+              border-top-left-radius: 1vh;
+              border-bottom-right-radius: 1vh;
+
+              &:hover {
+                @include colors(lighten($color1, 25%), darken($color1, 10%), 0.15vh outset darken($color1, 10%));
+              }
+
+              &:active {
+                @include colors(lighten($color1, 50%), darken($color1, 25%), 0.15vh inset darken($color1, 10%));
+              }
+            }
+          }
+        }
+      }
     }
   }
-}
-
-ol, ul {
-  padding-left: 10vh;
-
-  li {
-    line-height: 7vh;
-  }
-
-  button {
-    @include colors(darken($color1, 10%), $color2, 0.15vh outset lighten($color1, 10%));
-    @include size(33vh, 6vh);
-    transition: 0.5s;
-    font-size: 2vh;
-
-    &:active {
-      border: 0.15vh inset darken($color1, 10%);
-    }
-  }
-
-  @for $i from 0 through 9 {
-    #button#{$i}:hover {
-      width: 40vh;
-      transition: 0.5s;
-    }
-  }
-}
-
-.board-row {
-  &:after {
-    clear: both;
-    display: table;
-  }
-}
-
-.square {
-  @include colors(darken($color2, 5%), darken(gray, 25%), 0.4vh solid $color1)
-  @include size($size_box, $size_box);
-  box-shadow: 2vh 2vh 1vh darken($color1, 7.5%);
-  float: left;
-  font-size: 13vh;
-  font-weight: bold;
-  line-height: $size_box;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  transition: 0.2s;
-
-  position: sticky;
-  span {
-    &.fieldLabel {
-      font-size: 2vw;
-      color: silver;
-      position: absolute;
-      bottom: -4.5vw;
-      right: 0.5vw;
-    }
-  }
-
-  &:hover {
-    background: lighten($color1, 60%);
-    transition: 0.2s;
-  }
-
-  &:active {
-    background-color: lighten($color1, 15%);
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.winSquare {
-  $color_no1: darken(desaturate(adjust-hue(mix($color1, $color2, 75%), -75deg), 10%), 5%);
-  $color_no2: lighten(desaturate(adjust-hue(lighten($color1, 20%), -10deg), 10%), 12.5%);
-  $color_no3: saturate(adjust-hue(mix($color1, $color2, 75%), 75deg), 10%);
-
-  background: linear-gradient(135deg, $color_no1, $color_no2, $color_no3);
-  color: $color2;
-
-  &:hover {
-    background: linear-gradient(135deg, lighten($color_no1, 25%), lighten($color_no2, 25%), lighten($color_no3, 25%));
-  }
-}
-
-.kbd-navigation .square:focus {
-  background: $color2;
-}
-
-.game {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 10vh;
-
-  div {
-    line-height: 4.5vh;
-  }
-
-  .sortButton {
-    @include colors(darken($color1, 10%), lighten($color1, 25%), 0.15vh outset darken($color1, 10%));
-    @include size(33vh, 4vh);
-    font-size: 2vh;
-    border-top-left-radius: 1vh;
-    border-bottom-right-radius: 1vh;
-
-    &:hover {
-      @include colors(lighten($color1, 25%), darken($color1, 10%), 0.15vh outset darken($color1, 10%));
-    }
-
-    &:active {
-      @include colors(lighten($color1, 50%), darken($color1, 25%), 0.15vh inset darken($color1, 10%));
-    }
-  }
-}
-
-.activeButton {
-  background-color: lighten($color1, 25%);
-  color: darken($color1, 15%);
-  font-weight: bold;
-  box-shadow: 5px 5px 10px darken($color1, 15%);
-}
-
-.lastClicked {
-  color: lighten($color1, 10%);
-  text-shadow: 1.5px 1.5px 3px lighten($color1, 40%);
 }
