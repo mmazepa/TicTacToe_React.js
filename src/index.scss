@@ -47,7 +47,7 @@ html {
                       @include size($size_box, $size_box);
                       box-shadow: 2vh 2vh 1vh darken($color1, 7.5%);
                       float: left;
-                      font-size: 13vh;
+                      font-size: $size_box/1.5;
                       font-weight: bold;
                       line-height: $size_box;
                       margin-right: -1px;
@@ -59,10 +59,10 @@ html {
 
                       span {
                         &.fieldLabel {
-                          font-size: 2vw;
-                          color: silver;
+                          font-size: $size_box/5.5;
+                          color: darken($color2, 20%);
                           position: absolute;
-                          bottom: -4.5vw;
+                          bottom: -$size_box/2.65;
                           right: 0.5vw;
                         }
                       }
@@ -70,10 +70,20 @@ html {
                       &:hover {
                         background: lighten($color1, 60%);
                         transition: 0.2s;
+                        span {
+                          &.fieldLabel {
+                            color: darken($color2, 50%);
+                          }
+                        }
                       }
 
                       &:active {
                         background-color: lighten($color1, 15%);
+                        span {
+                          &.fieldLabel {
+                            color: darken($color2, 10%);
+                          }
+                        }
                       }
 
                       &:focus {
