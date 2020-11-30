@@ -17,7 +17,7 @@ Simple Tic Tac Toe (noughts and crosses, Xs and Os) game made with **React.js**.
 * "going back in time" - ability to go back to any move,
 * sort back-buttons (the ones used to "go back in time") - ascending and descending,
 * view history of your moves,
-* view coordinates of every move saved in history of moves (e.g. ✗ on A1, 〇 on B2 etc.),
+* view coordinates of every move saved in history of moves (e.g. ✘ on A1, 〇 on B2 etc.),
 * highlight current move in the history of moves,
 * highlight the three fields which ensured victory,
 * information about the draw if the game ends due to lack of moves.
