@@ -12,6 +12,8 @@
 
 Simple Tic Tac Toe (noughts and crosses, Xs and Os) game made with **React.js**. Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![screenshot](presentation/screenshot.png "Tic Tac Toe Gameplay Photo")
+
 **Features:**
 * multiplayer game mode - on one computer only (no AI or script-controlled opponent),
 * "going back in time" - ability to go back to any move,
