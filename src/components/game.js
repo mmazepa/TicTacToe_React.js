@@ -2,6 +2,9 @@
 
 import React from "react";
 import Board from "./board.js";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const signs = ["✘", "〇"];
 
@@ -103,19 +106,27 @@ class Game extends React.Component {
 
         return (
             <div className="game">
-                <div className="game-board">
-                    <Board
-                        squares={current.squares}
-                        onClick={(i) => this.handleClick(i)}
-                    />
-                </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <button className="sortButton" onClick={() => sortButtons()}>
-                        Sort buttons
-                    </button>
-                    <ol>{moves}</ol>
-                </div>
+                <Container>
+                    <Row>
+                        <Col>
+                            <div className="game-board">
+                                <Board
+                                    squares={current.squares}
+                                    onClick={(i) => this.handleClick(i)}
+                                />
+                            </div>
+                        </Col>
+                        <Col>
+                            <div className="game-info">
+                                <div>{status}</div>
+                                <button className="sortButton" onClick={() => sortButtons()}>
+                                    Sort buttons
+                                </button>
+                                <ol>{moves}</ol>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         );
     }
