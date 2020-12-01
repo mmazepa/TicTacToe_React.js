@@ -192,7 +192,7 @@ const checkField = (squares1, squares2) => {
     }
 };
 
-const checkFieldWithLabel = (squares1, squares2) => {
+export const checkFieldWithLabel = (squares1, squares2) => {
     return calculateLabel(checkField(squares1, squares2));
 };
 
