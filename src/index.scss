@@ -73,7 +73,7 @@ html {
                             @include size($size_box, $size_box);
                             font-size: $size_box/1.5;
                             line-height: $size_box;
-                            box-shadow: 2vh 2vh 1vh darken($color1, 7.5%);
+                            box-shadow: 2.5vh 2.5vh 1.5vh darken($color1, 7.5%);
                             float: left;
                             font-weight: bold;
                             margin-right: -1px;
@@ -98,7 +98,7 @@ html {
                               transition: 0.2s;
                               span {
                                 &.fieldLabel {
-                                  color: darken($color2, 50%);
+                                  color: darken($color2, 35%);
                                 }
                               }
                             }
@@ -119,6 +119,11 @@ html {
                             &.lastClicked {
                               color: lighten($color1, 10%);
                               text-shadow: 1.5px 1.5px 3px lighten($color1, 40%);
+                              span {
+                                &.fieldLabel {
+                                  text-shadow: none;
+                                }
+                              }
                             }
 
                             &.winSquare {
@@ -161,7 +166,8 @@ html {
                     }
 
                     button {
-                      @include colors(darken($color1, 10%), $color2, 0.15vh outset lighten($color1, 10%));
+                      $border: 0.15vh outset lighten($color1, 10%);
+                      @include colors(darken($color1, 10%), $color2, $border);
                       @include size(33vh, 6vh);
                       transition: 0.5s;
                       font-size: 2vh;
@@ -171,8 +177,7 @@ html {
                       }
 
                       &.activeButton {
-                        background-color: lighten($color1, 25%);
-                        color: darken($color1, 15%);
+                        @include colors(lighten($color1, 25%), darken($color1, 15%), $border);
                         font-weight: bold;
                         box-shadow: 5px 5px 10px darken($color1, 15%);
                       }

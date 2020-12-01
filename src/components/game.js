@@ -84,7 +84,6 @@ class Game extends React.Component {
                             }}>
                         {desc}
                     </button>
-                    {history[this.state.stepNumber][0]}
                 </li>
             );
         });
