@@ -1,8 +1,7 @@
 /* jshint esversion: 6 */
 
 import { between, calculateLabel, checkFieldWithLabel } from "./../components/game.js";
-
-const signs = ["✘", "〇"];
+import { signs, labels } from "./../constants/constants.js";
 
 describe("\"between\" function", () => {
     test("Number 5 is between 2 and 7.", () => { expect(between(5, 2, 7)).toBe(true); });
@@ -12,23 +11,21 @@ describe("\"between\" function", () => {
 });
 
 describe("\"calculateLabel\" function", () => {
-    const labels = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"];
-    for (let i = 0; i < labels.length; i++) {
-        test("Field \"" + i + "\" is labeled \"" + labels[i] + "\".", () => {
-            expect(calculateLabel(i)).toBe(labels[i]);
+    labels.forEach((item, index) => {
+        test("Field \"" + index + "\" is labeled \"" + item + "\".", () => {
+            expect(calculateLabel(index)).toBe(item);
         });
-    }
+    });
 });
 
 describe("\"checkFieldWithLabel\" function", () => {
-    let squares1 = ["", "", "", "", "", "", "", "", ""];
-    let squares2 = ["", "", "", "", "", "", "", "", ""];
-    const labels = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"];
-    for (let i = 0; i < labels.length; i++) {
-        test("Last assigned field is \"" + labels[i] + "\".", () => {
-            squares2[i] = signs[i%2];
-            expect(checkFieldWithLabel(squares1, squares2)).toBe(labels[i]);
-            squares1[i] = squares2[i];
+    let squares1 = new Array(9);
+    let squares2 = new Array(9);
+    labels.forEach((item, index) => {
+        test("Last assigned field is \"" + item + "\".", () => {
+            squares2[index] = signs[index%2];
+            expect(checkFieldWithLabel(squares1, squares2)).toBe(item);
+            squares1[index] = squares2[index];
         });
-    }
+    });
 });

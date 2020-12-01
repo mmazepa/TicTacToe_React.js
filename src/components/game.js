@@ -5,8 +5,7 @@ import Board from "./board.js";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
-const signs = ["✘", "〇"];
+import { signs } from "./../constants/constants.js";
 
 class Game extends React.Component {
     constructor(props) {
