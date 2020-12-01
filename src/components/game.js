@@ -74,7 +74,7 @@ class Game extends React.Component {
         const moves = history.map((step, move) => {
             const desc = move ?
                 "Move #" + move + ": " + ((move % 2) ? signs[0] : signs[1]) + " on " + checkFieldWithLabel(history[move-1].squares, history[move].squares) :
-                "Go to the beggining";
+                "Go to the beginning";
             return (
                 <li key={move} id={"li" + move}>
                     <button id={"button" + move}

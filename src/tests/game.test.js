@@ -15,7 +15,7 @@ describe("game", () => {
         render(<Game />);
         expect(screen.getByText(/Now player: /i)).toBeInTheDocument();
         expect(screen.getByText("Sort buttons")).toBeInTheDocument();
-        expect(screen.getByText("Go to the beggining")).toBeInTheDocument();
+        expect(screen.getByText("Go to the beginning")).toBeInTheDocument();
 
         const labels = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"];
         for (let i = 0; i < labels.length; i++) {
